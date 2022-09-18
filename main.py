@@ -1,2 +1,3 @@
-import bs4
+from bs4 import BeautifulSoup
 
+with open("index.html", )
