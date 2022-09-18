@@ -7,10 +7,8 @@ data = requests.get(url)
 doc = BeautifulSoup(data.text, 'html.parser')
 #print(doc.prettify)
 
-prices = doc.find_all(text='€')
-print(prices)
-for i, price in enumerate(prices):
-    parent = price.parent.parent
-    #print(parent)
-    span = parent.find_all("span")
-    print(parent.string)
+euro = doc.find_all(text='€')
+spans_complete = [euro[i].parent.parent.find_all('span') for i in range(len(euro))]
+spans = list(map(lambda spans_list : [spans_list[1].string, spans_list[0].string], spans_complete))
+
+print(spans)
