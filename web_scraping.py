@@ -14,6 +14,7 @@ url = "https://www.newegg.ca/gigabyte-geforce-rtx-3080-ti-gv-n308tgaming-oc-12gd
 
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")
+print(doc.prettify)
 
 prices = doc.find_all(text="$")
 parent = prices[0].parent
